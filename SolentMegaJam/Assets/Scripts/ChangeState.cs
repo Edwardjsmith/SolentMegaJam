@@ -13,6 +13,6 @@ public class ChangeState : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void changeState() {
-        component.loadCurrentScene(state);
+        component.loadScene((int)state);
 	}
 }

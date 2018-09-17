@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class player : MonoBehaviour {
 
@@ -20,9 +21,14 @@ public class player : MonoBehaviour {
     public int currentMove;
 
     float humanY;
+
+    public Text score;
+
+    public bool humanMove = false;
 	// Use this for initialization
 	void Start ()
     {
+        
         gameManager = GameObject.Find("gameManager");
         moves = new Transform[3];
 
@@ -48,14 +54,26 @@ public class player : MonoBehaviour {
     {
         transform.position = Vector3.MoveTowards(transform.position, moves[currentMove].position, moveSpeed * Time.deltaTime);
 
-        human.transform.position = Vector3.MoveTowards(human.transform.position, new Vector3(moves[currentMove].position.x, humanY,
-            moves[currentMove].position.z), humanSpeed * Time.deltaTime);
+        if (humanMove)
+        {
+            var newPos = new Vector3(moves[currentMove].position.x, humanY,
+                moves[currentMove].position.z);
+
+            human.transform.position = Vector3.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
+
+            if(human.transform.position == newPos)
+            {
+                humanMove = false;
+            }
+
+        }
 
         moveLeft();
         moveRight();
 
-        
-	}
+        gameManager.GetComponent<StartUp>().AddScore(1);
+        score.text = gameManager.GetComponent<StartUp>().score.ToString();
+    }
 
     void moveLeft()
     {
@@ -82,6 +100,6 @@ public class player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameManager.GetComponent<StartUp>().loadScene(2);
+        //gameManager.GetComponent<StartUp>().loadScene(2);
     }
 }

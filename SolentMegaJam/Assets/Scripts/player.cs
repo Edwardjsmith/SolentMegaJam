@@ -25,10 +25,13 @@ public class player : MonoBehaviour {
     public Text score;
 
     public bool humanMove = false;
+
+
+    Vector3 newPos;
+
 	// Use this for initialization
 	void Start ()
     {
-        
         gameManager = GameObject.Find("gameManager");
         moves = new Transform[3];
 
@@ -45,8 +48,8 @@ public class player : MonoBehaviour {
         currentMove = 1;
         transform.position = moves[currentMove].position;
         humanY = moves[currentMove].position.y + spacing;
-        human.transform.position = new Vector3(moves[currentMove].position.x, humanY, moves[currentMove].position.z);
-        
+        human.transform.position = new Vector3(moves[currentMove].position.x, humanY, moves[currentMove].position.z); 
+
     }
 	
 	// Update is called once per frame
@@ -56,15 +59,18 @@ public class player : MonoBehaviour {
 
         if (humanMove)
         {
-            var newPos = new Vector3(moves[currentMove].position.x, humanY,
+
+            
+                newPos = new Vector3(moves[currentMove].position.x, humanY,
                 moves[currentMove].position.z);
 
-            human.transform.position = Vector3.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
+                human.transform.position = Vector3.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
 
-            if(human.transform.position == newPos)
-            {
-                humanMove = false;
-            }
+                if (human.transform.position == newPos)
+                {
+                    humanMove = false;
+                }
+            
 
         }
 

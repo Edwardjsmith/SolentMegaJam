@@ -32,6 +32,8 @@ public class StartUp : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             Init();
         }
+
+        GetComponentInChildren<ObstacleSpawn>().gameObject.SetActive(false);
     }
 
     private void Init()
@@ -50,7 +52,12 @@ public class StartUp : MonoBehaviour {
         {
             loadScene((int)eGamestates.QUIT);// if esc is pressed exit the game
         }
-	}
+
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex((int)eGamestates.GAME))
+        {
+            //GetComponentInChildren<Obstacle>().gameObject.SetActive(true);
+        }
+}
 
     public void AddScore(int Score)
     {

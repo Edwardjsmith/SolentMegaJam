@@ -8,6 +8,8 @@ public class player : MonoBehaviour {
     public float humanSpeed;
     public GameObject human;
 
+    GameObject gameManager;
+
     Transform middleMove;
     Transform rightMove;
     Transform leftMove;
@@ -21,6 +23,7 @@ public class player : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        gameManager = GameObject.Find("gameManager");
         moves = new Transform[3];
 
         leftMove = GameObject.Find("moveLeft").transform;
@@ -50,6 +53,8 @@ public class player : MonoBehaviour {
 
         moveLeft();
         moveRight();
+
+        
 	}
 
     void moveLeft()
@@ -73,5 +78,10 @@ public class player : MonoBehaviour {
         {
             return;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameManager.GetComponent<StartUp>().loadScene(2);
     }
 }

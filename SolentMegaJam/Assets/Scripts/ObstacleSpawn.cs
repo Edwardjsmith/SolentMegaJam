@@ -32,8 +32,7 @@ public class ObstacleSpawn : MonoBehaviour {
     void Start () {
 
         origTimer = spawnTimer;
-        speed = 5;
-
+    
         obstaclepool = new List<GameObject>();
         for (int i = 0; i < pooledobstacle; i++)
         {

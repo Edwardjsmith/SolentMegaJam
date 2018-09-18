@@ -49,7 +49,9 @@ public class player : MonoBehaviour {
         currentMove = 1;
         transform.position = moves[currentMove].position;
         humanY = moves[currentMove].position.y + spacing;
-        human.transform.position = new Vector3(moves[currentMove].position.x, humanY, moves[currentMove].position.z); 
+        human.transform.position = new Vector3(moves[currentMove].position.x, humanY, moves[currentMove].position.z);
+
+
 
     }
 	
@@ -112,7 +114,7 @@ public class player : MonoBehaviour {
     {
         if(collision.GetComponent<obstacle>())
         {
-            gameManager.GetComponent<StartUp>().loadScene(2);
+            //gameManager.GetComponent<StartUp>().loadScene(2);
         }
         
     }

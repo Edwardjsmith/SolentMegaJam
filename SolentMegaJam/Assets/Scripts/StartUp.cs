@@ -54,8 +54,12 @@ public class StartUp : MonoBehaviour {
         }
 
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex((int)eGamestates.GAME))
+        { 
+            transform.GetChild(0).gameObject.SetActive(true); //This is the obstacle spawn
+        }
+        else
         {
-            //GetComponentInChildren<Obstacle>().gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 }
 

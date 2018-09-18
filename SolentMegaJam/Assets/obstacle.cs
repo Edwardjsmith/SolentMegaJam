@@ -11,4 +11,9 @@ public class obstacle : MonoBehaviour {
     {
         transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameObject.SetActive(false);
+    }
 }

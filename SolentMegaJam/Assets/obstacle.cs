@@ -14,6 +14,11 @@ public class obstacle : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.name != "humanTrigger")
+        {
+            gameObject.SetActive(false);
+            ObstacleSpawn.activeNum--;
+
+        }
     }
 }

@@ -16,9 +16,22 @@ public class ObstacleSpawn : MonoBehaviour {
     Transform spawn2;
     Transform spawn3;
 
+    RaycastHit2D[] rays;
 
+
+
+    public static int activeNum;
+    int maxNum = 0;
+    int spawn;
+
+
+    public float spawnTimer = 2.0f;
+    float origTimer;
+    
     // Use this for initialization
     void Start () {
+
+        origTimer = spawnTimer;
         speed = 5;
 
         obstaclepool = new List<GameObject>();
@@ -38,25 +51,63 @@ public class ObstacleSpawn : MonoBehaviour {
         spawnPoints.SetValue(spawn2, 1);
         spawnPoints.SetValue(spawn3, 2);
 
-        int spawn = Random.Range(0, obstaclepool.Capacity);
-
-        obstaclepool[spawn].transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
-        obstaclepool[spawn].SetActive(true);
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-
-    }
-    private void OnTriggerEnter(Collider collision)
-    {
-        //if (collision.gameObject.name == "Doggo" || collision.gameObject.name == "Human" || collision.gameObject.name == "poolDeactivator")
+       
+        foreach (GameObject go in obstaclepool)
         {
-            //Destroy(collision.gameObject);
-            obstacle.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
-            obstacle.SetActive(false);
+            if (go.activeSelf == false)
+            {
+                go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+
+
+
+        spawnOb();
+        
+
+
+        foreach (GameObject go in obstaclepool)
+        {
+            if (go.activeSelf == false)
+            {
+                go.transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+            }
+        }
+
+      
+    }
+
+  
+   
+    void spawnOb()
+    {
+        
+        if (spawnTimer <= 0)
+        {
+            maxNum = Random.Range(1, 3);
+            do
+            {
+                spawn = Random.Range(0, 18);
+                obstaclepool[spawn].gameObject.SetActive(true);
+                activeNum++;
+
+            } while (activeNum <= maxNum);
+
+            
+            spawnTimer = origTimer;
+            
+        }
+        spawnTimer -= Time.deltaTime;
     }
 }
 

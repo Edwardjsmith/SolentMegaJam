@@ -121,7 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 24042373}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: spawn2
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 316444492}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: spawn1
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 1054569196}
   - component: {fileID: 1054569195}
   - component: {fileID: 1054569194}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +554,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1087526457}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: spawn3
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}

@@ -19,6 +19,7 @@ public class player : MonoBehaviour {
     public int spacing = -2;
 
     public int currentMove;
+    int oldMove;
 
     float humanY;
 
@@ -83,7 +84,8 @@ public class player : MonoBehaviour {
 
     void moveLeft()
     {
-        if(Input.GetKeyDown("left") && moves[currentMove - 1] != null )
+        oldMove = currentMove;
+        if (Input.GetKeyDown("left") && moves[currentMove - 1] != null )
         {
             currentMove--;
         }
@@ -91,9 +93,11 @@ public class player : MonoBehaviour {
         {
             return;
         }
+       
     }
     void moveRight()
     {
+        oldMove = currentMove;
         if (Input.GetKeyDown("right") && moves[currentMove + 1] != null)
         {
             currentMove++;
@@ -106,6 +110,10 @@ public class player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //gameManager.GetComponent<StartUp>().loadScene(2);
+        if(collision.GetComponent<obstacle>())
+        {
+            gameManager.GetComponent<StartUp>().loadScene(2);
+        }
+        
     }
 }

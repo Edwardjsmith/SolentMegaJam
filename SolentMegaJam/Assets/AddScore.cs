@@ -23,9 +23,19 @@ public class AddScore : MonoBehaviour {
 
             if (newscore > highscore)
             {
-                PlayerPrefs.SetInt("Score"+count, newscore);
+                int newhigh = count;
+                int count2 = count+1;
+
+                while (PlayerPrefs.GetInt("Score"+count) != 0)
+                {
+                    PlayerPrefs.SetInt("Score"+count2, PlayerPrefs.GetInt("Score"+count));
+                    count++;
+                    count2++;
+                }
+                PlayerPrefs.SetInt("Score"+newhigh, newscore);
                 //PlayerPrefs.SetString("Name"+count, name input)
                 count = 0;
+                break;
             }
             else
             {

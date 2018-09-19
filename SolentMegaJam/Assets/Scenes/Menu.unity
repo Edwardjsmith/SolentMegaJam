@@ -361,12 +361,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5a9c4f5064d8240938e6ae94db79e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  obstacle: {fileID: 1124306524518998, guid: a779f1bd0e0466847bfbea0cb87993df, type: 2}
+  obstacle:
+  - {fileID: 1124306524518998, guid: a779f1bd0e0466847bfbea0cb87993df, type: 2}
+  - {fileID: 1942818185703274, guid: 6ca8ee67d8a2df44189c27ea4d8eb990, type: 2}
+  - {fileID: 1763255120975838, guid: 4950afb8e9b90d9499db1ff4fcae23a2, type: 2}
+  - {fileID: 1897780890068676, guid: d8ab40525e37b274fad75b32d0e3a63f, type: 2}
+  - {fileID: 1261860217827138, guid: ab3989ba36065ad4eb5dc8df9cc29e71, type: 2}
+  - {fileID: 1447209057731554, guid: 6a74d2b987abbc14a9122e46a7ba79ca, type: 2}
   pooledobstacle: 18
-  pos: {x: 0, y: 0, z: 0}
+  foliage:
+  - {fileID: 1592235384842302, guid: b6d9582acdbf1264b8d2c8f319fd9508, type: 2}
+  - {fileID: 1722691725410794, guid: e8149a4573fb4e44f83144c3475024ac, type: 2}
+  - {fileID: 1978639531396730, guid: 6ef2990c423bdf447a37da82bf417893, type: 2}
+  poolFoliage: 18
   GameManager: {fileID: 2015728892}
-  spawnTimer: 1.5
+  spawnTimer: 2
+  bushSpawnTimer: 1
 --- !u!1 &1093337301
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,11 +634,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59048dca26b3dc4296bc11300f8c632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   lastscore: 0
   Hiscore: 0
   e_Gamestates: 0
-  UpdateScore: 0
 --- !u!224 &2015728894
 RectTransform:
   m_ObjectHideFlags: 0

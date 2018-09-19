@@ -49,7 +49,7 @@ public class player : MonoBehaviour {
         currentMove = 1;
         transform.position = moves[currentMove].position;
         humanY = moves[currentMove].position.y + spacing;
-        human.transform.position = new Vector3(moves[currentMove].position.x, humanY, moves[currentMove].position.z);
+        human.transform.position = new Vector2(moves[currentMove].position.x, humanY);
 
 
 
@@ -58,16 +58,15 @@ public class player : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        transform.position = Vector3.MoveTowards(transform.position, moves[currentMove].position, moveSpeed * Time.deltaTime);
+        
 
         if (humanMove)
         {
 
             
-                newPos = new Vector3(moves[currentMove].position.x, humanY,
-                moves[currentMove].position.z);
+                newPos = new Vector2(moves[currentMove].position.x, humanY);
 
-                human.transform.position = Vector3.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
+                human.transform.position = Vector2.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
 
                 if (human.transform.position == newPos)
                 {
@@ -77,37 +76,51 @@ public class player : MonoBehaviour {
 
         }
 
-        moveLeft();
-        moveRight();
+        if (Input.GetKeyDown("left"))
+        {
+            moveLeft();
+        }
+        if (Input.GetKeyDown("right"))
+        {
+            moveRight();
+        }
+
+        transform.position = Vector2.MoveTowards(transform.position, moves[currentMove].position, moveSpeed * Time.deltaTime);
 
         gameManager.GetComponent<StartUp>().AddScore(1);
-        score.text = gameManager.GetComponent<StartUp>().score.ToString();
+        score.text = StartUp.score.ToString();
     }
 
     void moveLeft()
     {
+
         oldMove = currentMove;
-        if (Input.GetKeyDown("left") && moves[currentMove - 1] != null )
+        if (!inBounds(currentMove - 1, moves))
         {
-            currentMove--;
+            currentMove = oldMove;
         }
         else
         {
-            return;
+            currentMove--;
         }
        
     }
     void moveRight()
     {
         oldMove = currentMove;
-        if (Input.GetKeyDown("right") && moves[currentMove + 1] != null)
+        if (!inBounds(currentMove + 1, moves))
         {
-            currentMove++;
+            currentMove = oldMove;
         }
         else
         {
-            return;
+            currentMove++;
         }
+    }
+
+    private bool inBounds(int index, Transform[] array)
+    {
+        return (index >= 0) && (index < array.Length);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

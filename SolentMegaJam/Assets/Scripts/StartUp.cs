@@ -9,13 +9,14 @@ public enum eGamestates
 };
 
 public class StartUp : MonoBehaviour {
-    public int score;
+    public static int score;
     public int lastscore;
     public int Hiscore;
     //public int lives;
     //public int level;
 
 
+    public static int scoreTracker;
     //public Vector3 PlayerStart;
     public eGamestates e_Gamestates;
     //public GameObject background;
@@ -24,7 +25,7 @@ public class StartUp : MonoBehaviour {
     //public int maxLives;
     //public int pickupScore;
     //public int pickupCounter;
-    public bool UpdateScore = false;
+    
     //public bool UpdateLives = false;
     private void Awake()
     {
@@ -34,6 +35,8 @@ public class StartUp : MonoBehaviour {
         }
 
         GetComponentInChildren<ObstacleSpawn>().gameObject.SetActive(false);
+
+        scoreTracker = score + 1000;
     }
 
     private void Init()
@@ -60,6 +63,11 @@ public class StartUp : MonoBehaviour {
         else
         {
             transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if(score >= scoreTracker)
+        {
+            scoreTracker = score + 1000;
         }
 }
 
@@ -156,7 +164,7 @@ public class StartUp : MonoBehaviour {
         return score;
     }
 
-    public void setUpdateScore(bool set)
+    /*public void setUpdateScore(bool set)
     {
         UpdateScore = set;
     }
@@ -166,7 +174,7 @@ public class StartUp : MonoBehaviour {
         UpdateLives = set;
     }*/
 
-    public bool getUpdateScore()
+    /*public bool getUpdateScore()
     {
         return UpdateScore;
     }

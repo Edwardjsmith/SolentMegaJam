@@ -142,6 +142,7 @@ public class ObstacleSpawn : MonoBehaviour {
             do
             {
                 spawn = Random.Range(0, 18);
+                obstaclepool[spawn].transform.position = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
                 obstaclepool[spawn].gameObject.SetActive(true);
                 activeNum++;
 
@@ -162,8 +163,11 @@ public class ObstacleSpawn : MonoBehaviour {
             do
             {
                 spawn = Random.Range(0, 18);
+
+
                 foliagePool[spawn].gameObject.SetActive(true);
                 bushActiveNum++;
+
             } while (bushActiveNum < maxNum);
 
             bushSpawnTimer = origBushTimer;

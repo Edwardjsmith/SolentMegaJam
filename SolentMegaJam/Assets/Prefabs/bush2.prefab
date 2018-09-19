@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4433944405850440}
   - component: {fileID: 212988770028611836}
   - component: {fileID: 114530840989160046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bush2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,8 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 182817cad7663c44c98d8cca1ec9cb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 0
   speed: 0
+  otherEnemy:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!212 &212988770028611836
 SpriteRenderer:
   m_ObjectHideFlags: 1

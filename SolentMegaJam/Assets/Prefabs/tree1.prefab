@@ -54,6 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   speed: 0
+  otherEnemy:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!212 &212662069385215298
 SpriteRenderer:
   m_ObjectHideFlags: 1

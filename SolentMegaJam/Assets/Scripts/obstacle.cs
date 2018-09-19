@@ -10,6 +10,7 @@ public class obstacle : MonoBehaviour {
 
     public float speed;
 
+    public LayerMask otherEnemy;
 
     private void Start()
     {
@@ -31,20 +32,22 @@ public class obstacle : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name != "humanTrigger")
+        if (collision.name != "humanTrigger" && collision.gameObject.layer != otherEnemy)
         {
             gameObject.SetActive(false);
-
+        }
+        if(collision.gameObject.layer == otherEnemy)
+        {
             if (Type == type.obstacle)
-            {
-                transform.position = ObstacleSpawn.spawnPoints[Random.Range(0, ObstacleSpawn.spawnPoints.Length)].transform.position;
-                ObstacleSpawn.activeNum--;
-            }
-            else if(Type == type.bush)
-            {
-                transform.position = ObstacleSpawn.spawnPointsFoliage[Random.Range(0, ObstacleSpawn.spawnPointsFoliage.Length)].transform.position;
-                ObstacleSpawn.bushActiveNum--;
-            }
+           {
+               transform.position = ObstacleSpawn.spawnPoints[Random.Range(0, ObstacleSpawn.spawnPoints.Length)].transform.position;
+           }
+           else if(Type == type.bush)
+           {
+               transform.position = ObstacleSpawn.spawnPointsFoliage[Random.Range(0, ObstacleSpawn.spawnPointsFoliage.Length)].transform.position;
+           }
+
+            Debug.Log("Reset pos");
         }
     }
 }

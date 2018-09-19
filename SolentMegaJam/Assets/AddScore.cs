@@ -19,21 +19,27 @@ public class AddScore : MonoBehaviour {
     {
         while (true)
         {
-            highscore = PlayerPrefs.GetInt("Score"+count, 0);
+            highscore = PlayerPrefs.GetInt("Score" + count, 0);
 
             if (newscore > highscore)
             {
                 int newhigh = count;
                 int count2 = count+1;
 
-                while (PlayerPrefs.GetInt("Score"+count) != 0)
+                while (PlayerPrefs.GetInt("Score" + count, 0) != 0)//find end of scoreboard
                 {
-                    PlayerPrefs.SetInt("Score"+count2, PlayerPrefs.GetInt("Score"+count));
                     count++;
                     count2++;
                 }
-                PlayerPrefs.SetInt("Score"+newhigh, newscore);
-                //PlayerPrefs.SetString("Name"+count, name input)
+                while (count != newhigh)//shuffle scoreboard down
+                {
+                    PlayerPrefs.SetInt("Score" + count2, PlayerPrefs.GetInt("Score" + count));
+                    PlayerPrefs.SetString("Name" + count2, PlayerPrefs.GetString("Name" + count));
+                    count--;
+                    count2--;
+                }
+                PlayerPrefs.SetInt("Score" + newhigh, newscore); //insert new score
+                //PlayerPrefs.SetString("Name"+count, name input) //ask for name
                 count = 0;
                 break;
             }

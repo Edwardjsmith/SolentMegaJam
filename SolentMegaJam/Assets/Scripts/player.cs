@@ -27,11 +27,17 @@ public class player : MonoBehaviour {
 
     public bool humanMove = false;
 
+    public string lineSortingLayer;
+    public int lineOrderInLayer;
 
     Vector3 newPos;
 
-	// Use this for initialization
-	void Start ()
+    LineRenderer lineRenderer;
+
+    public GameObject collar;
+
+    // Use this for initialization
+    void Start ()
     {
         gameManager = GameObject.Find("gameManager");
         moves = new Transform[3];
@@ -51,14 +57,20 @@ public class player : MonoBehaviour {
         humanY = moves[currentMove].position.y + spacing;
         human.transform.position = new Vector2(moves[currentMove].position.x, humanY);
 
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.material.color = Color.black;
+        lineRenderer.widthMultiplier = 0.2f;
 
+        lineRenderer.sortingLayerName = lineSortingLayer;
+        lineRenderer.sortingOrder = lineOrderInLayer;
 
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
+        lineRenderer.SetPosition(0, collar.transform.position);
+        lineRenderer.SetPosition(1, human.transform.GetChild(0).transform.position);
 
         if (humanMove)
         {

@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUpSpawn : MonoBehaviour {
-    public float speed;
+    
     public GameObject PowerUp;
     public int pooledPowerUp = 12;
     List<GameObject> PowerUppool;
-    public Vector3 pos;
-    public GameObject GameManager;
+    
     // Use this for initialization
     void Start () {
-        speed = 3;
-
+        
         PowerUppool = new List<GameObject>();
         for (int i = 0; i < pooledPowerUp; i++);
         {

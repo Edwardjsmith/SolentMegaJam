@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class player : MonoBehaviour {
 
+    public LayerMask obstacle;
+
     public float moveSpeed = 10.0f;
     public float humanSpeed;
     public GameObject human;
@@ -137,10 +139,12 @@ public class player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<obstacle>())
+        if(collision.gameObject.layer == obstacle)
         {
-            //gameManager.GetComponent<StartUp>().loadScene(2);
+            gameManager.GetComponent<StartUp>().loadScene(2);
         }
-        
+        if()
+
+
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class obstacle : MonoBehaviour {
 
-    public enum type { bush, obstacle };
+    public enum type { bush, obstacle, powerup };
 
     public type Type;
 
@@ -49,5 +49,9 @@ public class obstacle : MonoBehaviour {
 
             Debug.Log("Reset pos");
         }
+
+        
+
+        
     }
 }

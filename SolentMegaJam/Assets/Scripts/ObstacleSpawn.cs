@@ -175,5 +175,26 @@ public class ObstacleSpawn : MonoBehaviour {
 
         bushSpawnTimer -= Time.deltaTime;
     }
+
+    void spawnPowerup()
+    {
+        if (bushSpawnTimer <= 0)
+        {
+            maxNum = Random.Range(1, 2);
+            do
+            {
+                spawn = Random.Range(0, 18);
+
+
+                foliagePool[spawn].gameObject.SetActive(true);
+                bushActiveNum++;
+
+            } while (bushActiveNum < maxNum);
+
+            bushSpawnTimer = origBushTimer;
+        }
+
+        bushSpawnTimer -= Time.deltaTime;
+    }
 }
 

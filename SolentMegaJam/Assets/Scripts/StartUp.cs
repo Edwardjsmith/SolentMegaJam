@@ -9,29 +9,34 @@ public enum eGamestates
 };
 
 public class StartUp : MonoBehaviour {
-    public int score;
+    public static int score;
     public int lastscore;
     public int Hiscore;
-    public int lives;
-    public int level;
+    //public int lives;
+    //public int level;
 
 
-    public Vector3 PlayerStart;
+    public static int scoreTracker;
+    //public Vector3 PlayerStart;
     public eGamestates e_Gamestates;
-    public GameObject background;
+    //public GameObject background;
 
-    public GameObject lifePickup;
-    public int maxLives;
-    public int pickupScore;
-    public int pickupCounter;
-    public bool UpdateScore = false;
-    public bool UpdateLives = false;
+    //public GameObject lifePickup;
+    //public int maxLives;
+    //public int pickupScore;
+    //public int pickupCounter;
+    
+    //public bool UpdateLives = false;
     private void Awake()
     {
         {
             DontDestroyOnLoad(gameObject);
             Init();
         }
+
+        GetComponentInChildren<ObstacleSpawn>().gameObject.SetActive(false);
+
+        scoreTracker = score + 1000;
     }
 
     private void Init()
@@ -39,56 +44,39 @@ public class StartUp : MonoBehaviour {
         Hiscore = 0;
         lastscore = 0;
         score = 0;
-        loadCurrentScene(e_Gamestates);
+        //loadCurrentScene(e_Gamestates);
     }
 
-    public void loadCurrentScene(eGamestates states)
-    {
-        e_Gamestates = states;
-        switch (e_Gamestates)
-        {
-            case eGamestates.MENU:
-                SceneManager.LoadScene("Menu");
-                break;
-            case eGamestates.GAME:
-                SceneManager.LoadScene("Game");
-                lives = 3;
-                break;
-            case eGamestates.GAMEOVER:
-                SceneManager.LoadScene("GameOver");
-                lastscore = score;
-                if(score >= Hiscore)
-                {
-                    Hiscore = score;
-                }
-                score = 0;
-                lives = 3;
-                break;
-            case eGamestates.QUIT:
-                Application.Quit();
-                break;
-
-            default:
-                break;
-                
-                 
-        }
-    }
+    
 
 	// Update is called once per frame
 	void Update () {
         if (Input.GetButton("Cancel"))
         {
-            loadCurrentScene(eGamestates.QUIT);// if esc is pressed exit the game
+            loadScene((int)eGamestates.QUIT);// if esc is pressed exit the game
         }
-	}
+
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex((int)eGamestates.GAME))
+        { 
+            transform.GetChild(0).gameObject.SetActive(true); //This is the obstacle spawn
+        }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        if(score >= scoreTracker)
+        {
+            scoreTracker = score + 1000;
+        }
+}
 
     public void AddScore(int Score)
     {
         score += Score;
     }
 
-    public void AddLife()
+    /*public void AddLife()
     {
         lives++;
     }
@@ -101,15 +89,15 @@ public class StartUp : MonoBehaviour {
     public int GetLives()
     {
         return lives;
-    }
+    }*/
 
-    public void placeBG()
+    /*public void placeBG()
     {
         GameObject.Instantiate(background).transform.SetPositionAndRotation(new Vector3(0,0, 3.6f), Quaternion.Euler(0,0,0));
         GameObject.Instantiate(background).transform.SetPositionAndRotation(new Vector3(0,21.5f, 3.6f), Quaternion.Euler(0,0,0));
-    }
+    }*/
 
-    public void spawnPickup(Vector3 position)
+    /*public void spawnPickup(Vector3 position)
     {
         int choice = Random.Range(1, 2);
         switch(choice)
@@ -136,14 +124,14 @@ public class StartUp : MonoBehaviour {
                 break;
                
         }
-    }
+    }*/
 
-    public void incrementPickupCounter()
+    /*public void incrementPickupCounter()
     {
         pickupCounter++;
     }
 
-    public int getPickuoCounter()
+    public int getPickupCounter()
     {
         return pickupCounter;
     }
@@ -160,7 +148,7 @@ public class StartUp : MonoBehaviour {
     public int getmaxLives()
     {
         return maxLives;
-    }
+    }*/
 
     public int GetHisScore()
     {
@@ -176,24 +164,56 @@ public class StartUp : MonoBehaviour {
         return score;
     }
 
-    public void setUpdateScore(bool set)
+    /*public void setUpdateScore(bool set)
     {
         UpdateScore = set;
     }
 
-    public void setUpdateLives(bool set)
+    /*public void setUpdateLives(bool set)
     {
         UpdateLives = set;
-    }
+    }*/
 
-    public bool getUpdateScore()
+    /*public bool getUpdateScore()
     {
         return UpdateScore;
     }
 
-    public bool getUpdateLives()
+    /*public bool getUpdateLives()
     {
         return UpdateLives;
-    }
+    }*/
 
+    public void loadScene(int states)
+    {
+        e_Gamestates = (eGamestates)states;
+        switch (e_Gamestates)
+        {
+            case eGamestates.MENU:
+                SceneManager.LoadScene("Menu");
+                break;
+            case eGamestates.GAME:
+                SceneManager.LoadScene("Game");
+                //lives = 3;
+                break;
+            case eGamestates.GAMEOVER:
+                SceneManager.LoadScene("GameOver");
+                lastscore = score;
+                if (score >= Hiscore)
+                {
+                    Hiscore = score;
+                }
+                score = 0;
+                //lives = 3;
+                break;
+            case eGamestates.QUIT:
+                Application.Quit();
+                break;
+
+            default:
+                break;
+
+
+        }
+    }
 }

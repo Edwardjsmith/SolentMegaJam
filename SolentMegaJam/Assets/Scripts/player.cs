@@ -23,16 +23,17 @@ public class player : MonoBehaviour {
     public int currentMove;
     int oldMove;
 
-    float humanY;
+    public float humanY;
 
     public Text score;
 
     public bool humanMove = false;
 
+   
     public string lineSortingLayer;
     public int lineOrderInLayer;
 
-    Vector3 newPos;
+    public Vector3 newPos;
 
     LineRenderer lineRenderer;
 
@@ -83,9 +84,12 @@ public class player : MonoBehaviour {
 
         if (humanMove)
         {
+            /*if (!hasMove)
+            {
+                newPos = new Vector2(moves[currentMove].position.x, humanY);
+                hasMove = true;
+            }*/
 
-
-            newPos = new Vector2(moves[currentMove].position.x, humanY);
 
             human.transform.position = Vector2.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
 
@@ -93,10 +97,8 @@ public class player : MonoBehaviour {
             {
                 humanMove = false;
             }
-
-
         }
-
+        
         if (Input.GetKeyDown("left"))
         {
             moveLeft();

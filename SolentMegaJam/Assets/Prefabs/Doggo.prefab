@@ -292,17 +292,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   moveSpeed: 5
   humanSpeed: 3
   human: {fileID: 0}
   moves: []
   spacing: -2
   currentMove: 0
+  humanY: 0
   score: {fileID: 0}
   humanMove: 0
   lineSortingLayer: 
   lineOrderInLayer: 1
+  newPos: {x: 0, y: 0, z: 0}
   collar: {fileID: 1630991155192574}
   gameover: {fileID: 0}
   effects:
@@ -320,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87f1f89ee822f547a7dc730ee6773c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1952312176935858}
 --- !u!120 &120087484356742548
 LineRenderer:
   m_ObjectHideFlags: 1

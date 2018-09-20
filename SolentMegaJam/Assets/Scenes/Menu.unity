@@ -343,6 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436650468}
   - component: {fileID: 436650469}
+  - component: {fileID: 436650470}
   m_Layer: 5
   m_Name: ScrollView
   m_TagString: Untagged
@@ -400,6 +401,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &436650470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436650467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &585474079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795980957}
   - component: {fileID: 1795980958}
+  - component: {fileID: 1795980959}
   m_Layer: 5
   m_Name: OptionsView
   m_TagString: Untagged
@@ -1337,6 +1350,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1795980959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1795980956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1864655245
 GameObject:
   m_ObjectHideFlags: 0

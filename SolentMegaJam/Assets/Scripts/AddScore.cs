@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AddScore : MonoBehaviour {
 
-    private int newscore;
+    public InputField nameinput;
+
+    private int newscore = 10;
     private int highscore;
 
     private int count = 0;
+    private bool loop = true;
 
 	void Start () //on game end
     {
@@ -15,9 +19,9 @@ public class AddScore : MonoBehaviour {
         //newscore = PlayerPrefs.GetInt("NewScore")
 	}
 	
-	void Update ()
+	public void Scoring ()
     {
-        while (true)
+        while (loop == true)
         {
             highscore = PlayerPrefs.GetInt("Score" + count, 0);
 
@@ -38,10 +42,10 @@ public class AddScore : MonoBehaviour {
                     count--;
                     count2--;
                 }
-                PlayerPrefs.SetInt("Score" + newhigh, newscore); //insert new score
-                //PlayerPrefs.SetString("Name"+count, name input) //ask for name
+                PlayerPrefs.SetInt("Score" + newhigh, newscore);//insert new score
+                PlayerPrefs.SetString("Name" + count, nameinput.text);//insert name
                 count = 0;
-                break;
+                loop = false;
             }
             else
             {

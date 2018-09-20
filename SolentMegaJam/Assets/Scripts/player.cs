@@ -47,11 +47,13 @@ public class player : MonoBehaviour {
 
     float oneSec = 1.0f;
 
+  
     // Use this for initialization
     void Start()
     {
         source = GetComponent<AudioSource>();
-        gameover.color = new Color(gameover.color.r, gameover.color.g, gameover.color.b, 0);
+
+        gameover.gameObject.SetActive(false);
         gameManager = GameObject.Find("gameManager").GetComponent<StartUp>();
         moves = new Transform[3];
 
@@ -122,6 +124,10 @@ public class player : MonoBehaviour {
         oneSec -= Time.deltaTime;
 
         score.text = "Score: " + StartUp.score.ToString();
+
+        
+
+     
     }
 
     void moveLeft()
@@ -169,15 +175,16 @@ public class player : MonoBehaviour {
 
             source.clip = effects[2];
             source.Play();
-            //gameManager.audioSource.Play();
+            gameManager.audioSource.Stop();
+            
             PlayerPrefs.SetInt("Score0", StartUp.score);//insert new score
-            Debug.Log(StartUp.score);
-            //PlayerPrefs.SetString("Name0", name);//insert name
+            Time.timeScale = 0;
+            gameover.gameObject.SetActive(true);
 
-            gameManager.loadScene(2);
+            
 
         }
-        if(collision.name == "obTrigger")
+        if (collision.name == "obTrigger")
         {
             if(Random.Range(0, 2) == 1)
             {
@@ -195,20 +202,9 @@ public class player : MonoBehaviour {
 
     
     }
-
-        
-
+    
 
     
 
-    IEnumerator doFade()
-    {
-        float a = 0;
-        while(gameover.color.a < 1)
-        {
-            a += Time.deltaTime;
-            gameover.color = new Color(gameover.color.r, gameover.color.g, gameover.color.b, a);
-        }
-        yield return null;
-    }
+ 
 }

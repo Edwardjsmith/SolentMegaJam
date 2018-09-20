@@ -113,57 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &158599449
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 158599451}
-  - component: {fileID: 158599450}
-  m_Layer: 5
-  m_Name: gameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &158599450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 158599449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59048dca26b3dc4296bc11300f8c632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastscore: 0
-  Hiscore: 0
-  e_Gamestates: 2
-  audioSource: {fileID: 0}
-  clips: []
---- !u!224 &158599451
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 158599449}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1693530940}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 574, y: 267.5}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &175713147
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000015646276}
+  m_AnchoredPosition: {x: 0, y: 0.000030701365}
   m_SizeDelta: {x: 600, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &279361333
@@ -485,7 +434,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158599450}
+      - m_Target: {fileID: 114260537255670350, guid: c0265fd8bbd7dc34e8dc8be826f5e6c5,
+          type: 2}
         m_MethodName: loadScene
         m_Mode: 3
         m_Arguments:
@@ -1101,7 +1051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac35b84a2755cc3458cf550981127087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameinput: {fileID: 1385352754}
 --- !u!1 &1469007531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,67 +1341,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -21.76}
---- !u!1 &1693530939
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1693530940}
-  - component: {fileID: 1693530941}
-  m_Layer: 5
-  m_Name: obstacleSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1693530940
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1693530939}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 158599451}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1693530941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1693530939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5a9c4f5064d8240938e6ae94db79e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacle:
-  - {fileID: 1124306524518998, guid: a779f1bd0e0466847bfbea0cb87993df, type: 2}
-  - {fileID: 1942818185703274, guid: 6ca8ee67d8a2df44189c27ea4d8eb990, type: 2}
-  - {fileID: 1763255120975838, guid: 4950afb8e9b90d9499db1ff4fcae23a2, type: 2}
-  - {fileID: 1897780890068676, guid: d8ab40525e37b274fad75b32d0e3a63f, type: 2}
-  - {fileID: 1261860217827138, guid: ab3989ba36065ad4eb5dc8df9cc29e71, type: 2}
-  - {fileID: 1447209057731554, guid: 6a74d2b987abbc14a9122e46a7ba79ca, type: 2}
-  pooledobstacle: 18
-  foliage:
-  - {fileID: 1592235384842302, guid: b6d9582acdbf1264b8d2c8f319fd9508, type: 2}
-  - {fileID: 1722691725410794, guid: e8149a4573fb4e44f83144c3475024ac, type: 2}
-  - {fileID: 1978639531396730, guid: 6ef2990c423bdf447a37da82bf417893, type: 2}
-  poolFoliage: 18
-  GameManager: {fileID: 158599449}
-  spawnTimer: 2
-  bushSpawnTimer: 1
 --- !u!1 &1870110244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,7 +1702,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 158599450}
+      - m_Target: {fileID: 114260537255670350, guid: c0265fd8bbd7dc34e8dc8be826f5e6c5,
+          type: 2}
         m_MethodName: loadScene
         m_Mode: 3
         m_Arguments:

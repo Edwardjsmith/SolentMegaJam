@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class AddScore : MonoBehaviour {
 
-    public InputField nameinput;
-
     private int newscore = 10;
     private int highscore;
 
@@ -17,9 +15,14 @@ public class AddScore : MonoBehaviour {
     {
         newscore = StartUp.score;
         //newscore = PlayerPrefs.GetInt("NewScore")
-	}
+
+        var input = gameObject.GetComponent<InputField>();
+        var se = new InputField.SubmitEvent();
+        se.AddListener(Scoring);
+        input.onEndEdit = se;
+    }
 	
-	public void Scoring ()
+	public void Scoring (string name)
     {
         while (loop == true)
         {
@@ -43,7 +46,7 @@ public class AddScore : MonoBehaviour {
                     count2--;
                 }
                 PlayerPrefs.SetInt("Score" + newhigh, newscore);//insert new score
-                PlayerPrefs.SetString("Name" + count, nameinput.text);//insert name
+                PlayerPrefs.SetString("Name" + count, name);//insert name
                 count = 0;
                 loop = false;
             }

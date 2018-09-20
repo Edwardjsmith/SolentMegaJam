@@ -143,6 +143,8 @@ MonoBehaviour:
   lastscore: 0
   Hiscore: 0
   e_Gamestates: 2
+  audioSource: {fileID: 0}
+  clips: []
 --- !u!224 &158599451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -269,6 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 234544893}
   - component: {fileID: 234544894}
+  - component: {fileID: 234544895}
   m_Layer: 5
   m_Name: ScrollView
   m_TagString: Untagged
@@ -326,6 +329,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &234544895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 234544892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &271491451
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.000011310389}
+  m_AnchoredPosition: {x: 0, y: 0.000015646276}
   m_SizeDelta: {x: 600, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &279361333

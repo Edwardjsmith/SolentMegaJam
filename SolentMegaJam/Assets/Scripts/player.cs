@@ -113,7 +113,7 @@ public class player : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, moves[currentMove].position, moveSpeed * Time.deltaTime);
 
         gameManager.GetComponent<StartUp>().AddScore(1);
-        score.text = StartUp.score.ToString();
+        score.text = "Score: " + StartUp.score.ToString();
     }
 
     void moveLeft()

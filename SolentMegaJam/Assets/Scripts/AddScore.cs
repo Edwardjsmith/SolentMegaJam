@@ -11,7 +11,7 @@ public class AddScore : MonoBehaviour {
 
 	void Start () //on game end
     {
-        //newscore = final score from game once game has ended
+        newscore = StartUp.score;
         //newscore = PlayerPrefs.GetInt("NewScore")
 	}
 	

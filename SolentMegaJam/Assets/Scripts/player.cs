@@ -141,7 +141,7 @@ public class player : MonoBehaviour {
     {
         if(collision.gameObject.layer == obstacle)
         {
-            gameManager.GetComponent<StartUp>().loadScene(2);
+            //gameManager.GetComponent<StartUp>().loadScene(2);
         }
         //if()
 

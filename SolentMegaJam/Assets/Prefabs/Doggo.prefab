@@ -194,9 +194,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0907513ee5418754283bf215f2191f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacle:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 5
   humanSpeed: 3
-  human: {fileID: 0}
+  human: {fileID: 1857175484845302, guid: a28aa0104ff84d34fbea03450c202e74, type: 2}
   moves: []
   spacing: -2
   currentMove: 0

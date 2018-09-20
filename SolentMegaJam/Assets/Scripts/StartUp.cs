@@ -25,13 +25,21 @@ public class StartUp : MonoBehaviour {
     //public int maxLives;
     //public int pickupScore;
     //public int pickupCounter;
-    
+
     //public bool UpdateLives = false;
+
+
+    public AudioSource audioSource;
+    public AudioClip[] clips;
+
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         {
             DontDestroyOnLoad(gameObject);
             Init();
+            audioSource.clip = clips[0];
+            audioSource.Play();
         }
 
         GetComponentInChildren<ObstacleSpawn>().gameObject.SetActive(false);
@@ -191,13 +199,16 @@ public class StartUp : MonoBehaviour {
         {
             case eGamestates.MENU:
                 SceneManager.LoadScene("Menu");
+                audioSource.clip = clips[0];
                 break;
             case eGamestates.GAME:
                 SceneManager.LoadScene("Game");
+                audioSource.clip = clips[0];
                 //lives = 3;
                 break;
             case eGamestates.GAMEOVER:
                 SceneManager.LoadScene("GameOver");
+                audioSource.clip = clips[1];
                 lastscore = score;
                 if (score >= Hiscore)
                 {

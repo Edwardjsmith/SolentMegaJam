@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 212943789338653716}
   - component: {fileID: 61341912598464318}
   - component: {fileID: 120087484356742548}
+  - component: {fileID: 82882814053489598}
   m_Layer: 0
   m_Name: Doggo
   m_TagString: Untagged
@@ -71,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952312176935858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.447742, y: -1.4094145, z: -0.16015625}
+  m_LocalPosition: {x: 12.447742, y: -1.4094145, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 4854705760001486}
@@ -86,7 +87,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1630991155192574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.126, z: 0}
+  m_LocalPosition: {x: 0, y: 0.126, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4058962037970400}
@@ -165,6 +166,101 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.23, y: 0.54}
   m_EdgeRadius: 0
+--- !u!82 &82882814053489598
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952312176935858}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!95 &95488130724243490
 Animator:
   serializedVersion: 3
@@ -199,7 +295,7 @@ MonoBehaviour:
     m_Bits: 0
   moveSpeed: 5
   humanSpeed: 3
-  human: {fileID: 1857175484845302, guid: a28aa0104ff84d34fbea03450c202e74, type: 2}
+  human: {fileID: 0}
   moves: []
   spacing: -2
   currentMove: 0
@@ -208,6 +304,11 @@ MonoBehaviour:
   lineSortingLayer: 
   lineOrderInLayer: 1
   collar: {fileID: 1630991155192574}
+  gameover: {fileID: 0}
+  effects:
+  - {fileID: 8300000, guid: 2da7719450d3afb45b79117e608f4987, type: 3}
+  - {fileID: 8300000, guid: ba9433b37cf7621439f0f521f82ee813, type: 3}
+  - {fileID: 8300000, guid: 7b45148d5eb0b5d4a9394e6a8c839a49, type: 3}
 --- !u!114 &114666396814390034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -309,7 +410,7 @@ LineRenderer:
     textureMode: 1
     generateLightingData: 0
   m_UseWorldSpace: 1
-  m_Loop: 0
+  m_Loop: 1
 --- !u!212 &212943789338653716
 SpriteRenderer:
   m_ObjectHideFlags: 1

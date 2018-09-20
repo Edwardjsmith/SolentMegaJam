@@ -11,7 +11,7 @@ public class player : MonoBehaviour {
     public float humanSpeed;
     public GameObject human;
 
-    GameObject gameManager;
+    StartUp gameManager;
 
     Transform middleMove;
     Transform rightMove;
@@ -38,16 +38,23 @@ public class player : MonoBehaviour {
 
     public GameObject collar;
 
+    public Image gameover;
+
+    AudioSource source;
+    public AudioClip[] effects;
+
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-        gameManager = GameObject.Find("gameManager");
+        source = GetComponent<AudioSource>();
+        gameover.color = new Color(gameover.color.r, gameover.color.g, gameover.color.b, 0);
+        gameManager = GameObject.Find("gameManager").GetComponent<StartUp>();
         moves = new Transform[3];
 
         leftMove = GameObject.Find("moveLeft").transform;
         middleMove = GameObject.Find("moveMiddle").transform;
         rightMove = GameObject.Find("moveRight").transform;
-        
+
 
         moves.SetValue(leftMove, 0);
         moves.SetValue(middleMove, 1);
@@ -67,9 +74,9 @@ public class player : MonoBehaviour {
         lineRenderer.sortingOrder = lineOrderInLayer;
 
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         lineRenderer.SetPosition(0, collar.transform.position);
         lineRenderer.SetPosition(1, human.transform.GetChild(0).transform.position);
@@ -77,16 +84,16 @@ public class player : MonoBehaviour {
         if (humanMove)
         {
 
-            
-                newPos = new Vector2(moves[currentMove].position.x, humanY);
 
-                human.transform.position = Vector2.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
+            newPos = new Vector2(moves[currentMove].position.x, humanY);
 
-                if (human.transform.position == newPos)
-                {
-                    humanMove = false;
-                }
-            
+            human.transform.position = Vector2.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
+
+            if (human.transform.position == newPos)
+            {
+                humanMove = false;
+            }
+
 
         }
 
@@ -117,7 +124,7 @@ public class player : MonoBehaviour {
         {
             currentMove--;
         }
-       
+
     }
     void moveRight()
     {
@@ -139,12 +146,51 @@ public class player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == obstacle)
+        if (collision.gameObject.tag == "obstacle")
         {
-            //gameManager.GetComponent<StartUp>().loadScene(2);
+            //StartCoroutine(doFade());
+
+            if(source.isPlaying)
+            {
+                source.Stop();
+            }
+
+            source.clip = effects[2];
+            source.Play();
+            //gameManager.audioSource.Play();
         }
-        //if()
+        if(collision.name == "obTrigger")
+        {
+            if(Random.Range(0, 1) == 1)
+            {
+                source.clip = effects[1];
+                source.Play();
+            }
+            else
+            {
+                source.clip = effects[0];
+                source.Play();
+            }
+
+            
+        }
+
+    
+    }
+
+        
 
 
+    
+
+    IEnumerator doFade()
+    {
+        float a = 0;
+        while(gameover.color.a < 1)
+        {
+            a += Time.deltaTime;
+            gameover.color = new Color(gameover.color.r, gameover.color.g, gameover.color.b, a);
+        }
+        yield return null;
     }
 }

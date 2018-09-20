@@ -143,7 +143,7 @@ public class player : MonoBehaviour {
         {
             gameManager.GetComponent<StartUp>().loadScene(2);
         }
-        if()
+        //if()
 
 
     }

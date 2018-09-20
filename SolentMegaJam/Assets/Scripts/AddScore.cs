@@ -13,19 +13,16 @@ public class AddScore : MonoBehaviour {
 
 	void Start () //on game end
     {
-        newscore = StartUp.score;
+        //newscore = StartUp.score;
         //newscore = PlayerPrefs.GetInt("NewScore")
-
-        var input = gameObject.GetComponent<InputField>();
-        var se = new InputField.SubmitEvent();
-        se.AddListener(Scoring);
-        input.onEndEdit = se;
     }
 	
-	public void Scoring (string name)
+	public void Scoring ()
     {
+        newscore = PlayerPrefs.GetInt("NewScore");
         while (loop == true)
         {
+            newscore = StartUp.score;
             highscore = PlayerPrefs.GetInt("Score" + count, 0);
 
             if (newscore > highscore)
@@ -46,6 +43,7 @@ public class AddScore : MonoBehaviour {
                     count2--;
                 }
                 PlayerPrefs.SetInt("Score" + newhigh, newscore);//insert new score
+                PlayerPrefs.GetString("Name" + count, " ");//if name is empty
                 PlayerPrefs.SetString("Name" + count, name);//insert name
                 count = 0;
                 loop = false;

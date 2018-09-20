@@ -15,29 +15,20 @@ public class AddScore : MonoBehaviour {
 
 	void Start () //on game end
     {
-<<<<<<< HEAD
         //newscore = StartUp.score;
-=======
         newscore = PlayerPrefs.GetInt("NewScore");
-
-        //highscore = PlayerPrefs.GetInt("Score0", 0);
->>>>>>> EdsBranch
-        //newscore = PlayerPrefs.GetInt("NewScore")
     }
 	
 	public void Scoring ()
     {
-<<<<<<< HEAD
         newscore = PlayerPrefs.GetInt("NewScore");
+
         while (loop == true)
-=======
-        /*while (loop == true)
->>>>>>> EdsBranch
         {
             newscore = StartUp.score;
             highscore = PlayerPrefs.GetInt("Score" + count, 0);
 
-            if (newscore > highscore)
+            /*if (newscore > highscore)
             {
                 int newhigh = count;
                 int count2 = count+1;
@@ -66,12 +57,11 @@ public class AddScore : MonoBehaviour {
             else
             {
                 count++;
-            }
+            }*/
             Debug.Log("main loop");
-        }*/
+        }
 
-        //PlayerPrefs.SetFloat("Score0", newscore);//insert new score
-        //Debug.Log(gm.GetScore());
+        PlayerPrefs.SetFloat("Score0", newscore);//insert new score
         PlayerPrefs.SetString("Name0", name);//insert name
     }
 }

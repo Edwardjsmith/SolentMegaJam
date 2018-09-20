@@ -70,7 +70,7 @@ public class player : MonoBehaviour {
 
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.material.color = Color.black;
-        lineRenderer.widthMultiplier = 0.2f;
+        lineRenderer.widthMultiplier = 0.1f;
 
         lineRenderer.sortingLayerName = lineSortingLayer;
         lineRenderer.sortingOrder = lineOrderInLayer;

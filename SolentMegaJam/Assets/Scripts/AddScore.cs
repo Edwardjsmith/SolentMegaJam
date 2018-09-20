@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class AddScore : MonoBehaviour {
 
+<<<<<<< HEAD
     private int newscore;
+=======
+    private int newscore = 10;
+>>>>>>> origin/NikBranch2
     private int highscore;
 
     private int count = 0;
@@ -13,9 +17,18 @@ public class AddScore : MonoBehaviour {
     {
         newscore = StartUp.score;
         //newscore = PlayerPrefs.GetInt("NewScore")
-	}
+
+        var input = gameObject.GetComponent<InputField>();
+        var se = new InputField.SubmitEvent();
+        se.AddListener(Scoring);
+        input.onEndEdit = se;
+    }
 	
+<<<<<<< HEAD
 	void Update ()
+=======
+	public void Scoring (string name)
+>>>>>>> origin/NikBranch2
     {
         while (true)
         {
@@ -38,8 +51,13 @@ public class AddScore : MonoBehaviour {
                     count--;
                     count2--;
                 }
+<<<<<<< HEAD
                 PlayerPrefs.SetInt("Score" + newhigh, newscore); //insert new score
                 //PlayerPrefs.SetString("Name"+count, name input) //ask for name
+=======
+                PlayerPrefs.SetInt("Score" + newhigh, newscore);//insert new score
+                PlayerPrefs.SetString("Name" + count, name);//insert name
+>>>>>>> origin/NikBranch2
                 count = 0;
                 break;
             }

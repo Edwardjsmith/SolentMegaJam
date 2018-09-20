@@ -16,9 +16,6 @@ public class Scoreboard : MonoBehaviour {
 
     void Start ()
     {
-        PlayerPrefs.SetInt("Score0", 50);
-        PlayerPrefs.SetString("Name0", "Weeee");
-
         while (PlayerPrefs.GetInt("Score" + count, 0) != 0)
         {
             highscore = PlayerPrefs.GetInt("Score" + count, 0);

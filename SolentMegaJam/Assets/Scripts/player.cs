@@ -21,6 +21,7 @@ public class player : MonoBehaviour {
     public int spacing = -2;
 
     public int currentMove;
+    int humanPos;
     int oldMove;
 
     public float humanY;
@@ -84,21 +85,22 @@ public class player : MonoBehaviour {
 
         if (humanMove)
         {
-            /*if (!hasMove)
+            human.transform.position = Vector2.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
+
+            if (Mathf.Abs(humanPos - currentMove) >= 1)
             {
                 newPos = new Vector2(moves[currentMove].position.x, humanY);
-                hasMove = true;
-            }*/
-
-
-            human.transform.position = Vector2.MoveTowards(human.transform.position, newPos, humanSpeed * Time.deltaTime);
+            }
 
             if (human.transform.position == newPos)
             {
                 humanMove = false;
+                humanPos = currentMove;
             }
         }
         
+
+
         if (Input.GetKeyDown("left"))
         {
             moveLeft();
@@ -163,7 +165,7 @@ public class player : MonoBehaviour {
         }
         if(collision.name == "obTrigger")
         {
-            if(Random.Range(0, 1) == 1)
+            if(Random.Range(0, 2) == 1)
             {
                 source.clip = effects[1];
                 source.Play();

@@ -209,6 +209,7 @@ public class StartUp : MonoBehaviour {
             case eGamestates.GAMEOVER:
                 SceneManager.LoadScene("GameOver");
                 audioSource.clip = clips[1];
+                
                 lastscore = score;
                 if (score >= Hiscore)
                 {

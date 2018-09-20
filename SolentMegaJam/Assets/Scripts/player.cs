@@ -45,11 +45,15 @@ public class player : MonoBehaviour {
     AudioSource source;
     public AudioClip[] effects;
 
+    float oneSec = 1.0f;
+
+  
     // Use this for initialization
     void Start()
     {
         source = GetComponent<AudioSource>();
-        gameover.color = new Color(gameover.color.r, gameover.color.g, gameover.color.b, 0);
+
+        gameover.gameObject.SetActive(false);
         gameManager = GameObject.Find("gameManager").GetComponent<StartUp>();
         moves = new Transform[3];
 
@@ -70,7 +74,7 @@ public class player : MonoBehaviour {
 
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.material.color = Color.black;
-        lineRenderer.widthMultiplier = 0.2f;
+        lineRenderer.widthMultiplier = 0.1f;
 
         lineRenderer.sortingLayerName = lineSortingLayer;
         lineRenderer.sortingOrder = lineOrderInLayer;
@@ -112,8 +116,18 @@ public class player : MonoBehaviour {
 
         transform.position = Vector2.MoveTowards(transform.position, moves[currentMove].position, moveSpeed * Time.deltaTime);
 
-        gameManager.GetComponent<StartUp>().AddScore(1);
+        if (oneSec <= 0)
+        {
+            gameManager.GetComponent<StartUp>().AddScore(100);
+            oneSec = 1.0f;
+        }
+        oneSec -= Time.deltaTime;
+
         score.text = "Score: " + StartUp.score.ToString();
+
+        
+
+     
     }
 
     void moveLeft()
@@ -161,9 +175,16 @@ public class player : MonoBehaviour {
 
             source.clip = effects[2];
             source.Play();
-            //gameManager.audioSource.Play();
+            gameManager.audioSource.Stop();
+            
+            PlayerPrefs.SetInt("Score0", StartUp.score);//insert new score
+            Time.timeScale = 0;
+            gameover.gameObject.SetActive(true);
+
+            
+
         }
-        if(collision.name == "obTrigger")
+        if (collision.name == "obTrigger")
         {
             if(Random.Range(0, 2) == 1)
             {
@@ -181,20 +202,9 @@ public class player : MonoBehaviour {
 
     
     }
-
-        
-
+    
 
     
 
-    IEnumerator doFade()
-    {
-        float a = 0;
-        while(gameover.color.a < 1)
-        {
-            a += Time.deltaTime;
-            gameover.color = new Color(gameover.color.r, gameover.color.g, gameover.color.b, a);
-        }
-        yield return null;
-    }
+ 
 }

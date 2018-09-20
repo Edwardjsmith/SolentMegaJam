@@ -5,22 +5,34 @@ using UnityEngine.UI;
 
 public class AddScore : MonoBehaviour {
 
-    private int newscore = 10;
+    private int newscore;
     private int highscore;
 
     private int count = 0;
     private bool loop = true;
 
+    public StartUp gm;
+
 	void Start () //on game end
     {
+<<<<<<< HEAD
         //newscore = StartUp.score;
+=======
+        newscore = PlayerPrefs.GetInt("NewScore");
+
+        //highscore = PlayerPrefs.GetInt("Score0", 0);
+>>>>>>> EdsBranch
         //newscore = PlayerPrefs.GetInt("NewScore")
     }
 	
 	public void Scoring ()
     {
+<<<<<<< HEAD
         newscore = PlayerPrefs.GetInt("NewScore");
         while (loop == true)
+=======
+        /*while (loop == true)
+>>>>>>> EdsBranch
         {
             newscore = StartUp.score;
             highscore = PlayerPrefs.GetInt("Score" + count, 0);
@@ -29,11 +41,13 @@ public class AddScore : MonoBehaviour {
             {
                 int newhigh = count;
                 int count2 = count+1;
+                Debug.Log("found score position");
 
                 while (PlayerPrefs.GetInt("Score" + count, 0) != 0)//find end of scoreboard
                 {
                     count++;
                     count2++;
+                    Debug.Log("end loop");
                 }
                 while (count != newhigh)//shuffle scoreboard down
                 {
@@ -41,6 +55,7 @@ public class AddScore : MonoBehaviour {
                     PlayerPrefs.SetString("Name" + count2, PlayerPrefs.GetString("Name" + count));
                     count--;
                     count2--;
+                    Debug.Log("shuffle loop");
                 }
                 PlayerPrefs.SetInt("Score" + newhigh, newscore);//insert new score
                 PlayerPrefs.GetString("Name" + count, " ");//if name is empty
@@ -52,6 +67,11 @@ public class AddScore : MonoBehaviour {
             {
                 count++;
             }
-        }
-	}
+            Debug.Log("main loop");
+        }*/
+
+        //PlayerPrefs.SetFloat("Score0", newscore);//insert new score
+        //Debug.Log(gm.GetScore());
+        PlayerPrefs.SetString("Name0", name);//insert name
+    }
 }

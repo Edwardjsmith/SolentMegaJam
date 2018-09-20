@@ -12,6 +12,8 @@ public class obstacle : MonoBehaviour {
 
     public LayerMask otherEnemy;
 
+    public StartUp gm;
+
     private void Start()
     {
         speed = 5.0f;
@@ -32,10 +34,7 @@ public class obstacle : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name != "humanTrigger" && collision.gameObject.layer != otherEnemy && collision.name != "obTrigger")
-        {
-            gameObject.SetActive(false);
-        }
+      
         if(collision.gameObject.layer == otherEnemy && collision.name != "obTrigger")
         {
             if (Type == type.obstacle)

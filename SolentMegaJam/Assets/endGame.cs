@@ -19,6 +19,7 @@ public class endGame : MonoBehaviour {
 
     public void changeScene()
     {
+        Time.timeScale = 1;
         gm.loadScene(2);
     }
 }

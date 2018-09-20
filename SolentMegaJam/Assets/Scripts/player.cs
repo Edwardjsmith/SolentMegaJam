@@ -45,6 +45,8 @@ public class player : MonoBehaviour {
     AudioSource source;
     public AudioClip[] effects;
 
+    float oneSec = 1.0f;
+
     // Use this for initialization
     void Start()
     {
@@ -112,7 +114,13 @@ public class player : MonoBehaviour {
 
         transform.position = Vector2.MoveTowards(transform.position, moves[currentMove].position, moveSpeed * Time.deltaTime);
 
-        gameManager.GetComponent<StartUp>().AddScore(1);
+        if (oneSec <= 0)
+        {
+            gameManager.GetComponent<StartUp>().AddScore(100);
+            oneSec = 1.0f;
+        }
+        oneSec -= Time.deltaTime;
+
         score.text = "Score: " + StartUp.score.ToString();
     }
 
@@ -162,6 +170,12 @@ public class player : MonoBehaviour {
             source.clip = effects[2];
             source.Play();
             //gameManager.audioSource.Play();
+            PlayerPrefs.SetInt("Score0", StartUp.score);//insert new score
+            Debug.Log(StartUp.score);
+            //PlayerPrefs.SetString("Name0", name);//insert name
+
+            gameManager.loadScene(2);
+
         }
         if(collision.name == "obTrigger")
         {

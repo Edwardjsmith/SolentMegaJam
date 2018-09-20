@@ -12,6 +12,8 @@ public class obstacle : MonoBehaviour {
 
     public LayerMask otherEnemy;
 
+    public StartUp gm;
+
     private void Start()
     {
         speed = 5.0f;

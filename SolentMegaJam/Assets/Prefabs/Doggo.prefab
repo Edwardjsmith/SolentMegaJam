@@ -295,7 +295,7 @@ MonoBehaviour:
     m_Bits: 256
   moveSpeed: 5
   humanSpeed: 3
-  human: {fileID: 0}
+  human: {fileID: 1857175484845302, guid: a28aa0104ff84d34fbea03450c202e74, type: 2}
   moves: []
   spacing: -2
   currentMove: 0

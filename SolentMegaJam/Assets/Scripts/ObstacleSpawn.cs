@@ -15,7 +15,7 @@ public class ObstacleSpawn : MonoBehaviour {
     public int poolFoliage = 18;
     List<GameObject> foliagePool;
 
-    public GameObject GameManager;
+    public StartUp GameManager;
 
     public static Transform[] spawnPoints;
 

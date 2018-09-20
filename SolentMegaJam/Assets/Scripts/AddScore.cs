@@ -1,21 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AddScore : MonoBehaviour {
 
-<<<<<<< HEAD
     private int newscore;
-=======
-    private int newscore = 10;
->>>>>>> origin/NikBranch2
     private int highscore;
 
     private int count = 0;
+    private bool loop = true;
+
+    public StartUp gm;
 
 	void Start () //on game end
     {
-        newscore = StartUp.score;
+        newscore = PlayerPrefs.GetInt("NewScore");
+
+        //highscore = PlayerPrefs.GetInt("Score0", 0);
         //newscore = PlayerPrefs.GetInt("NewScore")
 
         var input = gameObject.GetComponent<InputField>();
@@ -24,13 +26,9 @@ public class AddScore : MonoBehaviour {
         input.onEndEdit = se;
     }
 	
-<<<<<<< HEAD
-	void Update ()
-=======
 	public void Scoring (string name)
->>>>>>> origin/NikBranch2
     {
-        while (true)
+        /*while (loop == true)
         {
             highscore = PlayerPrefs.GetInt("Score" + count, 0);
 
@@ -38,11 +36,13 @@ public class AddScore : MonoBehaviour {
             {
                 int newhigh = count;
                 int count2 = count+1;
+                Debug.Log("found score position");
 
                 while (PlayerPrefs.GetInt("Score" + count, 0) != 0)//find end of scoreboard
                 {
                     count++;
                     count2++;
+                    Debug.Log("end loop");
                 }
                 while (count != newhigh)//shuffle scoreboard down
                 {
@@ -50,21 +50,22 @@ public class AddScore : MonoBehaviour {
                     PlayerPrefs.SetString("Name" + count2, PlayerPrefs.GetString("Name" + count));
                     count--;
                     count2--;
+                    Debug.Log("shuffle loop");
                 }
-<<<<<<< HEAD
-                PlayerPrefs.SetInt("Score" + newhigh, newscore); //insert new score
-                //PlayerPrefs.SetString("Name"+count, name input) //ask for name
-=======
                 PlayerPrefs.SetInt("Score" + newhigh, newscore);//insert new score
                 PlayerPrefs.SetString("Name" + count, name);//insert name
->>>>>>> origin/NikBranch2
                 count = 0;
-                break;
+                loop = false;
             }
             else
             {
                 count++;
             }
-        }
-	}
+            Debug.Log("main loop");
+        }*/
+
+        //PlayerPrefs.SetFloat("Score0", newscore);//insert new score
+        //Debug.Log(gm.GetScore());
+        PlayerPrefs.SetString("Name0", name);//insert name
+    }
 }

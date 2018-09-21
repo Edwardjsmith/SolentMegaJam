@@ -167,19 +167,9 @@ public class player : MonoBehaviour {
         if (collision.gameObject.tag == "obstacle")
         {
             //StartCoroutine(doFade());
+            die();
 
-            if(source.isPlaying)
-            {
-                source.Stop();
-            }
-
-            source.clip = effects[2];
-            source.Play();
-            gameManager.audioSource.Stop();
-            
-            PlayerPrefs.SetInt("Score0", StartUp.score);//insert new score
-            Time.timeScale = 0;
-            gameover.gameObject.SetActive(true);
+          
 
             
 
@@ -203,6 +193,21 @@ public class player : MonoBehaviour {
     
     }
     
+    public void die()
+    {
+        if (source.isPlaying)
+        {
+            source.Stop();
+        }
+
+        source.clip = effects[2];
+        source.Play();
+        gameManager.audioSource.Stop();
+
+        PlayerPrefs.SetInt("Score0", StartUp.score);//insert new score
+        Time.timeScale = 0;
+        gameover.gameObject.SetActive(true);
+    }
 
     
 

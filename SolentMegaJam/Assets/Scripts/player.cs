@@ -177,7 +177,7 @@ public class player : MonoBehaviour {
             source.Play();
             gameManager.audioSource.Stop();
             
-            PlayerPrefs.SetInt("Score0", StartUp.score);//insert new score
+            PlayerPrefs.SetInt("NewScore", StartUp.score);//insert new score
             Time.timeScale = 0;
             gameover.gameObject.SetActive(true);
 

@@ -8,7 +8,7 @@ public class AddScore : MonoBehaviour {
     private int newscore;
     private int highscore;
 
-    private int count = 0;
+    private int count;
     private bool loop = true;
 
     public StartUp gm;
@@ -22,13 +22,14 @@ public class AddScore : MonoBehaviour {
 	public void Scoring ()
     {
         newscore = PlayerPrefs.GetInt("NewScore");
+        count = PlayerPrefs.GetInt("Count", 0) + 1;
 
-        while (loop == true)
+        /*while (loop == true)
         {
             newscore = StartUp.score;
             highscore = PlayerPrefs.GetInt("Score" + count, 0);
 
-            /*if (newscore > highscore)
+            if (newscore > highscore)
             {
                 int newhigh = count;
                 int count2 = count+1;
@@ -57,11 +58,12 @@ public class AddScore : MonoBehaviour {
             else
             {
                 count++;
-            }*/
+            }
             Debug.Log("main loop");
-        }
+        }*/
 
-        PlayerPrefs.SetFloat("Score0", newscore);//insert new score
-        PlayerPrefs.SetString("Name0", name);//insert name
+        PlayerPrefs.SetInt("Score"+count, newscore);//insert new score
+        PlayerPrefs.SetString("Name"+count, name);//insert name
+        PlayerPrefs.SetInt("Count", count);
     }
 }
